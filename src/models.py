@@ -23,6 +23,7 @@ class Person(Base):
     name = Column(String(250), nullable=False)
     gender = Column(String(20), nullable=False)
     eyes_color = Column(String(20), nullable = True) #nullable = True es que se puede dejar vacía la información
+    birth_year= Column(Integer, nullable=False)
     age = Column(Integer, nullable = False)
     favorites = relationship(Favorites, backref='user', lazy=True) #backref es una autoreferencia
 
@@ -45,7 +46,10 @@ class Planets(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(250))
     clima = Column(String(250))
-    población = Column(String(250), nullable=False)
+    poblation = Column(String(250), nullable=False)
+    diameter= Column (Integer, nullable=False)
+    terrain= Column (Integer, nullable=False)
+    height= Column (Integer, nullable=False)
     person_id = Column(Integer, ForeignKey('person.id'))
     person = relationship(Person)
     favorites = relationship(Favorites, backref='user', lazy=True) 
